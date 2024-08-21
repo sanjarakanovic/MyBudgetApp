@@ -20,7 +20,7 @@ public class CurrencyService {
 
     public BigDecimal getExchangeRate(String baseCurrency, String targetCurrency) {
 
-        String url = UriComponentsBuilder.fromHttpUrl(STR."\{EXCHANGE_API_URL}\{baseCurrency.toLowerCase()}.json")
+        String url = UriComponentsBuilder.fromHttpUrl(EXCHANGE_API_URL+ baseCurrency.toLowerCase()+ ".json")
                 .toUriString();
 
         CurrencyRateResponse response = restTemplate.getForObject(url, CurrencyRateResponse.class);
