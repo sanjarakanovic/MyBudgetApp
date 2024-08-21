@@ -1,0 +1,37 @@
+<mat-card>
+  <div mat-dialog-content>
+    <h1>{{ isEditing ? 'Edit Account' : 'Create Account' }}</h1>
+    <form [formGroup]="accountForm">
+
+      <mat-form-field>
+        <mat-label>Account Name</mat-label>
+        <input matInput formControlName="name" [attr.readonly]="isEditing ? true : null">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Balance</mat-label>
+        <input matInput formControlName="balance" type="number" step="0.01">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Currency</mat-label>
+        <input matInput
+               formControlName="currency"
+               [matAutocomplete]="auto"
+               style="text-transform: uppercase;">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let currency of filteredCurrencies | async" [value]="currency">
+            {{ currency }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+    </form>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button [disabled]="!accountForm.valid" (click)="onSave()">Save</button>
+  </div>
+
+</mat-card>

@@ -1,0 +1,53 @@
+<mat-card>
+  <div mat-dialog-content>
+    <h1>{{ isEditing ? 'Edit Transaction' : 'Create Transaction' }}</h1>
+    <form [formGroup]="transactionForm">
+
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Amount</mat-label>
+        <input matInput min="1" formControlName="amount" type="number">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of types" [value]="type">
+            {{ type }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Account</mat-label>
+        <mat-select formControlName="account">
+          <mat-option *ngFor="let account of accounts" [value]="account">
+            {{ account.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Currency</mat-label>
+        <input matInput
+               formControlName="currency"
+               [matAutocomplete]="auto"
+               style="text-transform: uppercase;">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let currency of filteredCurrencies | async" [value]="currency">
+            {{ currency }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button [disabled]="!transactionForm.valid" (click)="onSave()">Save</button>
+  </div>
+</mat-card>

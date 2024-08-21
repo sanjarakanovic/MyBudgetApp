@@ -1,0 +1,18 @@
+app-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+app-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+main {
+  padding-top: 10vh;
+  padding-bottom: 13vh;
+}
