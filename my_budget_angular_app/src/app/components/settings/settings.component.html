@@ -1,0 +1,31 @@
+<mat-card>
+
+  <mat-card-content>
+    <form [formGroup]="currencyForm">
+    <mat-form-field>
+      <mat-label>Default currency</mat-label>
+      <input matInput
+             formControlName="currency"
+             [matAutocomplete]="auto"
+             style="text-transform: uppercase;">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let currency of filteredCurrencies | async" [value]="currency">
+          {{ currency }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Exchange Rate Updated</mat-label>
+      <input matInput [value]="dateOfRateUpdated" disabled>
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-content>
+    <button mat-raised-button color="accent" (click)="deleteAllData()">Delete All Data</button>
+  </mat-card-content>
+
+</mat-card>

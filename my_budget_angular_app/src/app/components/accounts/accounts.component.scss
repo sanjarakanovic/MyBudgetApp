@@ -1,0 +1,26 @@
+mat-card {
+  box-shadow: none;
+  min-width: fit-content;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+th, td {
+  text-align: center;
+  font-size: medium;
+  padding-top: 2vh;
+}
+
+.small{
+  font-size:small;
+}
+
+.big {
+  font-size:large;
+}
+
+button {
+  margin-top: 2vh;
+}

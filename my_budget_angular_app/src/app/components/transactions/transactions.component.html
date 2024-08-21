@@ -1,0 +1,54 @@
+<mat-card>
+  <mat-card-content>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Filter by Account</mat-label>
+      <mat-select [(ngModel)]="selectedAccount" (selectionChange)="filterTransactions()">
+        <mat-option value="">All Accounts</mat-option> 
+        <mat-option *ngFor="let account of accounts" [value]="account.name">
+          {{ account.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <table mat-table [dataSource]="transactions">
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let transaction">
+          {{transaction.description}}
+          <p class="small">
+            {{transaction.account_name}}
+          </p>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> Amount </th>
+        <td mat-cell *matCellDef="let transaction" class="big">
+          {{transaction.type === TransactionType.CREDIT ? '-' : ''}} {{transaction.amountInDefaultCurrency | number:'1.2-2' }} {{defaultCurrency}}
+          <p *ngIf="defaultCurrency != transaction.currency" class="small">
+            {{transaction.type === TransactionType.CREDIT ? '-' : ''}} {{transaction.amount | number:'1.2-2' }} {{transaction.currency}}
+          </p>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let transaction">
+          <button mat-icon-button (click)="openEditDialog(transaction)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteTransaction(transaction)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </mat-card-content>
+</mat-card>
+
