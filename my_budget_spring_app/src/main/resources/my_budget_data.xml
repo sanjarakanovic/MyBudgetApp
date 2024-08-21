@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Accounts>
+    <Account name="John Doe" currency="EUR">
+        <Balance>1200.50</Balance>
+        <Transactions>
+            <Transaction>
+                <Description>Deposit some cash</Description>
+                <Amount currency="EUR">500.00</Amount>
+            </Transaction>
+            <Transaction>
+                <Description>Groceries</Description>
+                <Amount currency="EUR">-150.75</Amount>
+            </Transaction>
+            <Transaction>
+                <Description>Transfer to friends account</Description>
+                <Amount currency="EUR">-200.00</Amount>
+            </Transaction>
+        </Transactions>
+    </Account>
+    <Account name="Jane Smith" currency="USD">
+        <Balance>875.20</Balance>
+        <Transactions>
+            <Transaction>
+                <Description>Deposit money</Description>
+                <Amount currency="USD">300.00</Amount>
+            </Transaction>
+            <Transaction>
+                <Description>Udemy course payment</Description>
+                <Amount currency="USD">-45.50</Amount>
+            </Transaction>
+        </Transactions>
+    </Account>
+    <Account name="Michael Brown" currency="EUR">
+        <Balance>320.75</Balance>
+        <Transactions>
+            <Transaction>
+                <Description>Add money to account</Description>
+                <Amount currency="EUR">150.00</Amount>
+            </Transaction>
+            <Transaction>
+                <Description>Electricity bill payment</Description>
+                <Amount currency="EUR">-60.00</Amount>
+            </Transaction>
+        </Transactions>
+    </Account>
+    <Account name="Emily Johnson" currency="EUR">
+        <Balance>550.10</Balance>
+    </Account>
+</Accounts>
